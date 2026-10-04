@@ -30,7 +30,7 @@ export default function Index() {
   const { products, cart, cartCount, cartTotal, addToCart: addProductToCart, changeQuantity } = useStore();
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeScent, setActiveScent] = useState(products[0]);
+  const [activeNote, setActiveNote] = useState(products[0]);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [mobileSizes, setMobileSizes] = useState<Record<string, 6 | 12>>({});
@@ -104,7 +104,7 @@ export default function Index() {
           <span className="brand-name">ITR E <em>SHAMEEM</em><small>PURE ARTISANAL FRAGRANCES</small></span>
         </button>
         <nav className={`main-nav${menuOpen ? " mobile-open" : ""}`} aria-label="Main navigation">
-          <button onClick={() => scrollTo("heritage")}>Our Story</button><Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link><button onClick={() => scrollTo("notes")}>Blogs</button><button onClick={() => scrollTo("contact")}>Contact Us</button>
+          <button onClick={() => scrollTo("heritage")}>Our Story</button><Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link><button onClick={() => scrollTo("note-finder")}>Scent notes</button><button onClick={() => scrollTo("contact")}>Contact Us</button>
           <Link className="mobile-nav-order" to="/cart" onClick={() => setMenuOpen(false)}>Your bag <span>{cartCount}</span></Link>
         </nav>
         <div className="header-actions">
@@ -161,13 +161,26 @@ export default function Index() {
           <p className="collection-footnote"><Sparkles size={13} /> Every bottle is hand-filled and wrapped with care. Complimentary delivery on orders over ₹1,500.</p>
         </section>
 
-        <section className="notes-explorer" id="notes" style={{ "--mood-color": activeScent.color } as React.CSSProperties}>
-          <div className="notes-background-glow" />
-          <div className="notes-inner section-pad">
-            <div className="notes-intro reveal"><div className="eyebrow"><span /> FIND YOUR NOTE</div><h2>A scent is a<br /><em>place you go.</em></h2><p>Choose an attar. Let it take you somewhere.</p></div>
-            <div className="notes-panel reveal">
-              <div className="notes-list" role="tablist" aria-label="Explore attar moods">{products.map((product, index) => <button key={product.id} className={activeScent.id === product.id ? "active" : ""} onMouseEnter={() => setActiveScent(product)} onFocus={() => setActiveScent(product)} onClick={() => setActiveScent(product)} role="tab" aria-selected={activeScent.id === product.id}><span>{String(index + 1).padStart(2, "0")}</span>{product.name}<ArrowRight size={13} /></button>)}</div>
-              <div className="notes-description" key={activeScent.id}><div className="notes-seal"><Flower2 size={25} strokeWidth={1} /></div><span className="eyebrow">{activeScent.family}</span><h3>{activeScent.name}</h3><p>{activeScent.mood}</p><div className="note-chips"><span>{activeScent.top}</span><i>·</i><span>{activeScent.heart}</span><i>·</i><span>{activeScent.base}</span></div><button className="text-link" onClick={() => { setMobileSizes((current) => ({ ...current, [activeScent.id]: 6 })); scrollTo("collection"); }}>Discover this attar <ArrowRight size={14} /></button></div>
+        <section className="note-finder section-pad" id="note-finder" style={{ "--note-color": activeNote.color } as React.CSSProperties}>
+          <div className="note-finder-inner">
+            <div className="note-finder-copy">
+              <div className="eyebrow"><span /> FIND YOUR NOTE</div>
+              <h2>A scent is a<br /><em>place you go.</em></h2>
+              <p>{activeNote.mood}</p>
+              <Link className="note-finder-link" to={`/products/${activeNote.id}`}>Discover {activeNote.name} <ArrowRight size={14} /></Link>
+            </div>
+            <div className="note-finder-stage">
+              <div className="note-finder-art" key={activeNote.id}>
+                <span className="note-finder-orbit" />
+                <div className="note-finder-bottle"><ProductArtwork product={activeNote} /></div>
+                <span className="note-finder-family">{activeNote.family}</span>
+              </div>
+              <div className="note-finder-list">
+                <h3>Find Your Note</h3>
+                <div role="tablist" aria-label="Choose a fragrance">
+                  {products.map((product) => <button key={product.id} type="button" role="tab" aria-selected={activeNote.id === product.id} className={activeNote.id === product.id ? "active" : ""} onClick={() => setActiveNote(product)}>{product.name}<ArrowRight size={13} /></button>)}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -195,7 +208,7 @@ export default function Index() {
       </main>
 
       <footer className="site-footer">
-        <div className="footer-main"><button className="brand-lockup footer-brand" onClick={() => scrollTo("home")}><span className="brand-mark">I<span>·</span>S</span><span className="brand-name">ITRA <em>SHAMEEM</em><small>THE ART OF ATTAR</small></span></button><p>Essence of heritage, bottled.<br />Made slowly in Kannauj, India.</p><div className="footer-links"><span className="eyebrow">EXPLORE</span>{[["heritage", "Our heritage"], ["collection", "The collection"], ["notes", "Find your note"], ["contact", "Get in touch"]].map(([id, label]) => <button key={id} onClick={() => scrollTo(id)}>{label}</button>)}</div><div className="footer-connect"><span className="eyebrow">SAY NAMASTE</span><a href="tel:+919825258283">+91 98252 58283</a><button onClick={() => orderOnWhatsApp("Please tell me more about your attars.")}>WhatsApp us <ArrowRight size={13} /></button><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram <ArrowRight size={13} /></a></div></div>
+        <div className="footer-main"><button className="brand-lockup footer-brand" onClick={() => scrollTo("home")}><span className="brand-mark">I<span>·</span>S</span><span className="brand-name">ITRA <em>SHAMEEM</em><small>THE ART OF ATTAR</small></span></button><p>Essence of heritage, bottled.<br />Made slowly in Kannauj, India.</p><div className="footer-links"><span className="eyebrow">EXPLORE</span>{[["heritage", "Our heritage"], ["collection", "The collection"], ["note-finder", "Find your note"], ["contact", "Get in touch"]].map(([id, label]) => <button key={id} onClick={() => scrollTo(id)}>{label}</button>)}</div><div className="footer-connect"><span className="eyebrow">SAY NAMASTE</span><a href="tel:+919825258283">+91 98252 58283</a><button onClick={() => orderOnWhatsApp("Please tell me more about your attars.")}>WhatsApp us <ArrowRight size={13} /></button><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram <ArrowRight size={13} /></a></div></div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} ITRA SHAMEEM · ALL RIGHTS RESERVED</span><span>CRAFTED WITH PATIENCE IN KANNAUJ, INDIA <i>✳</i></span></div>
       </footer>
 

@@ -143,7 +143,7 @@ a { color: inherit; text-decoration: none; }
 .collection { position: relative; isolation: isolate; padding-top: 122px; padding-bottom: 104px; background: radial-gradient(ellipse at 5% 8%, rgba(111,45,56,.2), transparent 31%), radial-gradient(ellipse at 94% 89%, rgba(18,62,61,.22), transparent 36%), #0d0a07; }
 .collection::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .3; background: var(--jaali) 0 0 / 112px 112px; mask-image: linear-gradient(180deg, #000, transparent 55%, #000); pointer-events: none; }
 .section-heading { position: relative; margin-bottom: 60px; }
-.section-heading h2, .notes-intro h2, .contact-copy h2 { margin-top: 21px; font-size: clamp(56px, 6vw, 77px); letter-spacing: -2.2px; line-height: .87; }
+.section-heading h2, .contact-copy h2 { margin-top: 21px; font-size: clamp(56px, 6vw, 77px); letter-spacing: -2.2px; line-height: .87; }
 .section-heading > p { margin: 20px 0 0; color: #9c917c; font-size: 12px; letter-spacing: .25px; }
 .heading-index { position: absolute; right: 0; bottom: 10px; color: #74694f; font-family: "Cormorant Garamond", serif; font-size: 21px; letter-spacing: 1px; }
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 17px; }
@@ -176,27 +176,26 @@ a { color: inherit; text-decoration: none; }
 .collection-footnote { display: flex; justify-content: center; align-items: center; gap: 9px; margin: 34px 0 0; color: #8e836e; font-size: 9px; letter-spacing: .3px; text-align: center; }
 .collection-footnote svg { color: var(--gold); }
 
-.notes-explorer { min-height: 540px; position: relative; overflow: hidden; background: #10100c; transition: background-color .65s ease; isolation: isolate; }
-.notes-explorer::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .27; background-image: var(--jaali), repeating-linear-gradient(45deg, transparent 0 31px, rgba(201,164,92,.1) 31px 32px), repeating-linear-gradient(-45deg, transparent 0 31px, rgba(201,164,92,.1) 31px 32px); background-size: 100px 100px, auto, auto; mask-image: linear-gradient(90deg, #000, transparent 85%); }
-.notes-background-glow { position: absolute; z-index: -1; width: 570px; height: 570px; top: 50%; right: 8%; border-radius: 50%; background: var(--mood-color); filter: blur(170px); opacity: .12; transform: translateY(-50%); transition: background .65s ease, opacity .65s ease; }
-.notes-inner { min-height: 540px; display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 9%; padding-top: 95px; padding-bottom: 95px; }
-.notes-intro h2 { margin-top: 22px; font-size: clamp(54px, 5.6vw, 72px); }
-.notes-intro > p { margin-top: 20px; color: #a39a87; font-size: 12px; }
-.notes-panel { display: grid; grid-template-columns: .82fr 1.18fr; min-height: 300px; border: 1px solid rgba(201,164,92,.27); background: rgba(12,10,7,.47); backdrop-filter: blur(10px); }
-.notes-list { padding: 21px 0; border-right: 1px solid rgba(201,164,92,.18); }
-.notes-list button { width: 100%; display: flex; align-items: center; gap: 10px; border: 0; padding: 10px 17px; background: transparent; color: #9e927b; font-family: "Cormorant Garamond", serif; font-size: 16px; text-align: left; cursor: pointer; transition: color .25s ease, background .25s ease; }
-.notes-list button > span { width: 20px; color: #786c54; font-family: "Jost", sans-serif; font-size: 7px; }
-.notes-list button > svg { margin-left: auto; opacity: 0; transform: translateX(-4px); transition: .2s; }
-.notes-list button.active, .notes-list button:hover { background: rgba(201,164,92,.08); color: #e5d4ae; }
-.notes-list button.active > svg, .notes-list button:hover > svg { opacity: 1; transform: translateX(0); color: var(--gold); }
-.notes-description { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 34px clamp(23px, 4vw, 48px); animation: fade-in .4s ease; }
-.notes-seal { width: 49px; height: 49px; display: grid; place-items: center; margin-bottom: 21px; border: 1px solid rgba(201,164,92,.43); border-radius: 50%; color: var(--mood-color); transition: color .4s ease; }
-.notes-description .eyebrow { color: #b49b68; font-size: 7px; letter-spacing: 1.9px; }
-.notes-description h3 { margin: 9px 0; font-family: "Cormorant Garamond", serif; font-size: 40px; font-weight: 400; }
-.notes-description > p { max-width: 255px; min-height: 41px; margin: 0 0 16px; color: #b4aa97; font-size: 11px; line-height: 1.7; }
-.note-chips { display: flex; flex-wrap: wrap; gap: 7px; color: #aa9b7f; font-size: 8px; }
-.note-chips i { color: var(--gold); font-style: normal; }
-.text-link { display: flex; align-items: center; gap: 8px; margin-top: 23px; border: 0; padding: 0; background: none; color: var(--gold); font-size: 9px; letter-spacing: .6px; cursor: pointer; }
+.note-finder { position: relative; padding-top: 76px; padding-bottom: 78px; background-color: #f2e8d5; background-image: radial-gradient(ellipse at 90% 20%, rgba(18,62,61,.08), transparent 35%), var(--jaali); background-size: auto, 108px 108px; color: #251c12; }
+.note-finder-inner { display: grid; grid-template-columns: .85fr 1.6fr; align-items: center; gap: 7%; }
+.note-finder-copy .eyebrow { color: #93753f; }
+.note-finder-copy h2 { margin: 23px 0 17px; font-size: 58px; line-height: .94; }
+.note-finder-copy h2 em { color: #987744; }
+.note-finder-copy > p { max-width: 310px; min-height: 41px; margin: 0; color: #716554; font-size: 11px; line-height: 1.7; }
+.note-finder-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; padding: 11px 14px; background: #b08d50; color: #20180f; font-size: 9px; letter-spacing: .7px; }
+.note-finder-stage { min-width: 0; display: grid; grid-template-columns: .9fr 1.1fr; border: 1px solid rgba(139,103,48,.26); background: rgba(255,255,255,.28); }
+.note-finder-art { min-height: 340px; position: relative; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--note-color) 30%, transparent), transparent 54%), var(--jaali) center / 60px 60px, #dfd0b1; animation: fade-in .35s ease; }
+.note-finder-orbit { position: absolute; width: 210px; aspect-ratio: 1; border: 1px solid rgba(255,250,230,.78); border-radius: 50%; }
+.note-finder-bottle { position: relative; z-index: 1; width: 148px; filter: drop-shadow(0 12px 12px rgba(54,35,17,.28)); }
+.note-finder-bottle .bottle-svg { max-height: 250px; }
+.note-finder-family { position: absolute; bottom: 17px; left: 14px; right: 14px; color: #796441; font-size: 7px; letter-spacing: 1.5px; text-align: center; }
+.note-finder-list { min-width: 0; }
+.note-finder-list h3 { margin: 0; padding: 18px 21px; border-bottom: 1px solid rgba(139,103,48,.2); font-family: "Cormorant Garamond", serif; font-size: 28px; font-weight: 400; }
+.note-finder-list > div { max-height: 340px; overflow-y: auto; }
+.note-finder-list button { width: 100%; min-height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 0; border-bottom: 1px solid rgba(139,103,48,.13); padding: 0 21px; background: transparent; color: #554938; font-family: "Cormorant Garamond", serif; font-size: 17px; text-align: left; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.note-finder-list button svg { opacity: 0; transition: opacity .2s ease; }
+.note-finder-list button:hover, .note-finder-list button.active { background: #b08d50; color: #20180f; }
+.note-finder-list button.active svg, .note-finder-list button:hover svg { opacity: 1; }
 
 .promise { position: relative; isolation: isolate; padding-top: 115px; padding-bottom: 118px; background-color: #f2e8d5; background-image: radial-gradient(ellipse at 0% 100%, rgba(111,45,56,.1), transparent 36%), radial-gradient(ellipse at 100% 0%, rgba(18,62,61,.1), transparent 35%), var(--jaali); background-size: auto, auto, 112px 112px; color: #251c12; }
 .promise .eyebrow { color: #90723c; }
@@ -305,7 +304,7 @@ a { color: inherit; text-decoration: none; }
   .product-visual { height: 280px; }
   .product-bottle { width: 124px; }
   .heritage { gap: 7vw; }
-  .notes-inner { gap: 5%; }
+  .note-finder-inner { gap: 5%; }
   .promise-card { padding-right: 16px; padding-left: 16px; }
   .site-footer { padding-right: 6vw; padding-left: 6vw; }
 }
@@ -350,7 +349,7 @@ a { color: inherit; text-decoration: none; }
   .heritage-copy p, .contact-copy > p { font-size: 12px; }
   .collection { padding-top: 78px; padding-bottom: 70px; }
   .section-heading { margin-bottom: 38px; }
-  .section-heading h2, .notes-intro h2 { font-size: 57px; }
+  .section-heading h2 { font-size: 57px; }
   .section-heading > p { max-width: 255px; font-size: 10px; line-height: 1.65; }
   .heading-index { bottom: 5px; font-size: 15px; }
   .product-grid { gap: 11px; }
@@ -371,23 +370,15 @@ a { color: inherit; text-decoration: none; }
   .add-button svg { width: 11px; }
   .collection-footnote { align-items: flex-start; margin-top: 25px; font-size: 8px; line-height: 1.5; }
   .collection-footnote svg { flex-shrink: 0; margin-top: 1px; }
-  .notes-inner { grid-template-columns: 1fr; gap: 34px; padding-top: 75px; padding-bottom: 75px; }
-  .notes-intro h2 { margin-top: 18px; }
-  .notes-intro > p { margin-top: 14px; font-size: 10px; }
-  .notes-panel { grid-template-columns: .9fr 1.1fr; min-height: 290px; }
-  .notes-list { padding: 13px 0; }
-  .notes-list button { gap: 5px; padding: 10px 7px; font-size: 12px; }
-  .notes-list button > span { width: 16px; font-size: 6px; }
-  .notes-list button > svg { width: 11px; }
-  .notes-description { padding: 22px 12px; }
-  .notes-seal { width: 37px; height: 37px; margin-bottom: 15px; }
-  .notes-seal svg { width: 19px; }
-  .notes-description .eyebrow { font-size: 6px; letter-spacing: 1.2px; }
-  .notes-description h3 { font-size: 30px; }
-  .notes-description > p { min-height: 61px; margin-bottom: 11px; font-size: 9px; }
-  .note-chips { gap: 4px; font-size: 6px; }
-  .text-link { gap: 4px; margin-top: 18px; font-size: 7px; }
-  .text-link svg { width: 11px; }
+  .note-finder { padding-top: 66px; padding-bottom: 68px; }
+  .note-finder-inner { grid-template-columns: 1fr; gap: 26px; }
+  .note-finder-copy h2 { font-size: 51px; }
+  .note-finder-stage { grid-template-columns: .9fr 1.1fr; }
+  .note-finder-art { min-height: 310px; }
+  .note-finder-orbit { width: 180px; }
+  .note-finder-bottle { width: 100px; }
+  .note-finder-list h3 { padding: 15px 14px; font-size: 24px; }
+  .note-finder-list button { min-height: 38px; padding-right: 14px; padding-left: 14px; font-size: 15px; }
   .promise { padding-top: 76px; padding-bottom: 79px; }
   .promise .section-heading { margin-bottom: 36px; }
   .promise .section-heading h2 { font-size: 49px; }
@@ -424,7 +415,6 @@ a { color: inherit; text-decoration: none; }
   .product-title-row h3 { font-size: 17px; }
   .product-title-row > span { font-size: 12px; }
   .add-button { font-size: 7px; }
-  .notes-list button { font-size: 11px; }
 }
 @media (hover: none) and (min-width: 701px) {
   .product-notes { display: none; }
@@ -507,6 +497,7 @@ a { color: inherit; text-decoration: none; }
 .related-product-links a svg { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: #8a6b37; }
 .store-missing { padding-top: 110px; text-align: center; }
 .store-missing .eyebrow { justify-content: center; }
+
 .store-missing h1 { margin-bottom: 28px; }
 .store-missing .button { gap: 15px; }
 .cart-page { padding-bottom: 100px; }
