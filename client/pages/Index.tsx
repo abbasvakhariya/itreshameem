@@ -18,7 +18,7 @@ import {
   Sprout,
   X,
 } from "lucide-react";
-import { Bottle, createWhatsAppOrderUrl, money, ProductArtwork, useStore, whatsappNumber } from "@/lib/store";
+import { createWhatsAppOrderUrl, money, ProductArtwork, useStore, whatsappNumber } from "@/lib/store";
 
 const reviews = [
   { quote: "Oudh feels like discovering a secret room in an old haveli. I have never worn anything quite like it.", name: "Aarav Mehta", detail: "Mumbai · Oudh, 12ml" },
@@ -101,10 +101,10 @@ export default function Index() {
       <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
         <button className="brand-lockup" onClick={() => scrollTo("home")} aria-label="Itra Shameem, home">
           <span className="brand-mark">I<span>·</span>S</span>
-          <span className="brand-name">ITRA <em>SHAMEEM</em><small>THE ART OF ATTAR</small></span>
+          <span className="brand-name">ITR E <em>SHAMEEM</em><small>PURE ARTISANAL FRAGRANCES</small></span>
         </button>
         <nav className={`main-nav${menuOpen ? " mobile-open" : ""}`} aria-label="Main navigation">
-          <button onClick={() => scrollTo("heritage")}>Our heritage</button><Link to="/products" onClick={() => setMenuOpen(false)}>Shop</Link><button onClick={() => scrollTo("notes")}>Scent notes</button><button onClick={() => scrollTo("contact")}>Contact</button>
+          <button onClick={() => scrollTo("heritage")}>Our Story</button><Link to="/products" onClick={() => setMenuOpen(false)}>Products</Link><button onClick={() => scrollTo("notes")}>Blogs</button><button onClick={() => scrollTo("contact")}>Contact Us</button>
           <Link className="mobile-nav-order" to="/cart" onClick={() => setMenuOpen(false)}>Your bag <span>{cartCount}</span></Link>
         </nav>
         <div className="header-actions">
@@ -117,56 +117,24 @@ export default function Index() {
       <main>
         <section className="hero" id="home">
           <div className="hero-grain" />
-          <div className="hero-haze haze-one" /><div className="hero-haze haze-two" /><div className="hero-haze haze-three" />
-          <div className="hero-arch" aria-hidden="true">
-            <svg className="fatemi-gateway" viewBox="0 0 600 820" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="gateway-wall" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#d7b46c" stopOpacity=".18" /><stop offset=".48" stopColor="#c9a45c" stopOpacity=".035" /><stop offset="1" stopColor="#174d47" stopOpacity=".13" /></linearGradient>
-                <linearGradient id="gateway-line" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#846839" stopOpacity=".65" /><stop offset=".5" stopColor="#e2c57f" stopOpacity=".92" /><stop offset="1" stopColor="#846839" stopOpacity=".65" /></linearGradient>
-                <radialGradient id="gateway-light"><stop stopColor="#d5ad60" stopOpacity=".16" /><stop offset="1" stopColor="#d5ad60" stopOpacity="0" /></radialGradient>
-                <pattern id="gateway-jaali" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M0 12 12 0l12 12-12 12ZM0 0l24 24M24 0 0 24" fill="none" stroke="#d3b56e" strokeOpacity=".38" strokeWidth=".65" /><circle cx="12" cy="12" r="2" fill="#d3b56e" fillOpacity=".48" /></pattern>
-              </defs>
-              <ellipse cx="300" cy="390" rx="205" ry="248" fill="url(#gateway-light)" />
-              <path d="M65 820V360c0-95 40-155 119-198 60-33 94-60 116-107 22 47 56 74 116 107 79 43 119 103 119 198v460H65Z M105 820V378c0-79 36-128 105-167 44-25 72-53 90-93 18 40 46 68 90 93 69 39 105 88 105 167v442H105Z" fill="url(#gateway-wall)" fillRule="evenodd" />
-              <path className="gateway-outline" d="M65 820V360c0-95 40-155 119-198 60-33 94-60 116-107 22 47 56 74 116 107 79 43 119 103 119 198v460" />
-              <path className="gateway-inner-arch" d="M105 820V378c0-79 36-128 105-167 44-25 72-53 90-93 18 40 46 68 90 93 69 39 105 88 105 167v442" />
-              <path className="gateway-filigree" d="M84 820V361c0-86 37-143 109-183 58-32 91-62 107-103m216 745V361c0-86-37-143-109-183-58-32-91-62-107-103M126 820V383c0-68 31-113 90-147 43-25 69-51 84-86m174 670V383c0-68-31-113-90-147-43-25-69-51-84-86" />
-              <path className="gateway-lattice" d="M77 396h28v302H77zM495 396h28v302h-28z" fill="url(#gateway-jaali)" />
-              <path className="gateway-mosaic" d="M73 390v314m36-314v314m382-314v314m36-314v314" />
-              <path className="gateway-detail" d="M65 720h470M65 730h470M80 343h20m420 0h20M119 372h16m330 0h16M177 235h28m190 0h28M213 193l14 9m146-9-14 9M286 101l14 26 14-26M300 119v35M92 706h18m380 0h18M65 315l14-14m442 0 14 14" />
-              <path className="gateway-pillar" d="M111 820V295h18v525M471 820V295h18v525M99 296h42M459 296h42M103 283l17-13 17 13M463 283l17-13 17 13M100 285h40M460 285h40" />
-              <path className="gateway-dome" d="M107 270c1-15 5-27 13-34 8 7 12 19 13 34M467 270c1-15 5-27 13-34 8 7 12 19 13 34M120 236v-19m360 19v-19M114 217h12m348 0h12M111 270h18m342 0h18M111 282h18m342 0h18" />
-              <g className="gateway-ornament">
-                <g transform="translate(300 68)"><path d="M0-20C4-9 9-4 20 0 9 4 4 9 0 20-4 9-9 4-20 0-9-4-4-9 0-20Z" /><circle r="3" fill="#f2d68f" /></g>
-                <g transform="translate(72 320) scale(.72)"><path d="M0-20C4-9 9-4 20 0 9 4 4 9 0 20-4 9-9 4-20 0-9-4-4-9 0-20Z" /><circle r="3" fill="#f2d68f" /></g>
-                <g transform="translate(528 320) scale(.72)"><path d="M0-20C4-9 9-4 20 0 9 4 4 9 0 20-4 9-9 4-20 0-9-4-4-9 0-20Z" /><circle r="3" fill="#f2d68f" /></g>
-                <g transform="translate(72 742) scale(.58)"><path d="M0-20C4-9 9-4 20 0 9 4 4 9 0 20-4 9-9 4-20 0-9-4-4-9 0-20Z" /><circle r="3" fill="#f2d68f" /></g>
-                <g transform="translate(528 742) scale(.58)"><path d="M0-20C4-9 9-4 20 0 9 4 4 9 0 20-4 9-9 4-20 0-9-4-4-9 0-20Z" /><circle r="3" fill="#f2d68f" /></g>
-              </g>
-              <circle className="gateway-rosette" cx="300" cy="159" r="7" /><circle className="gateway-rosette" cx="300" cy="159" r="2" />
-            </svg>
-          </div>
           <div className="hero-content">
             <div className="eyebrow hero-eyebrow"><span /> <span /></div>
-            <h1>Essence of<br /><em>heritage,</em> bottled.</h1>
-            <p className="hero-copy">Ancient oils. Unhurried craft. A fragrance that<br className="desktop-break" /> remembers where it came from.</p>
+            <h1>Fragrances, that are <br /><em>Out of thisWorld </em> </h1>
+            <p className="hero-copy">Providing one of the <br className="desktop-break" /> best stuffs in the market.</p>
             <button className="button button-gold" onClick={() => scrollTo("collection")}>Explore the collection <ArrowRight size={15} /></button>
-            <div className="hero-footnote"><span>EST. IN THE TRADITION OF KANNAUJ</span><span>01 — 08</span></div>
+            <div className="hero-footnote"><span>EST. in Rajkot. Since 2025.</span><span></span></div>
           </div>
           <div className="hero-side-note">DISTILLED WITH DEVOTION <span>✳</span> WORN FOREVER</div>
           <button className="scroll-cue" onClick={() => scrollTo("heritage")} aria-label="Scroll to our heritage"><span>SCROLL TO DISCOVER</span><ArrowDown size={13} /></button>
-          <div className="hero-bottle"><Bottle color="#986b38" /></div>
-          <div className="hero-stamp"><span>100%</span><small>PURE<br />ATTAR</small></div>
         </section>
 
-        <section className="intro-strip" aria-label="Our craft"><span>NO ALCOHOL</span><i>✳</i><span>MADE BY HAND</span><i>✳</i><span>ROOTED IN KANNAUJ</span><i>✳</i><span>WORN CLOSE</span></section>
 
         <section className="heritage section-pad" id="heritage">
-          <div className="heritage-art reveal"><div className="heritage-frame"><div className="sun-disc" /><div className="heritage-vase"><Bottle color="#81572f" small /></div><div className="heritage-ornament">❋</div><span className="art-caption">THE DEG & BHAPKA · KANNAUJ, INDIA</span></div><div className="heritage-vertical">A LEGACY IN EVERY DROP</div></div>
+          <div className="heritage-art reveal"><img src="/kalakasi-hero.png" alt="Kalakasi premium attar bottle with jasmine and oud" /></div>
           <div className="heritage-copy reveal">
-            <div className="eyebrow"><span /> OUR HERITAGE</div>
-            <h2>Patience is<br />the <em>first note.</em></h2>
-            <p>In Kannauj, the perfume capital of India, fragrance is not made in haste. Fresh botanicals are distilled in copper degs, their vapour guided by bamboo into a cool bhapka—where the scent settles, drop by precious drop, into a base of pure sandalwood oil.</p>
+            <div className="eyebrow"><span /> OUR STORY</div>
+            <h2>How did<em> ITR E SHAMEEM </em> Begin?</h2>
+            <p>This was all a coincidence. PURE HAPPENSTANCE. We were two strangers who met at a random place. And then we decided to become friends. And that way, </p>
             <p>This is the deg-bhapka method: a living tradition passed through generations. No alcohol. No shortcuts. Only the quiet alchemy of earth, flower, fire and time.</p>
             <div className="heritage-signoff"><span className="signoff-flower">❋</span><span>Made slowly. Meant to stay.</span></div>
           </div>
